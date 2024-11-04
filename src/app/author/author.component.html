@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="authorId" class="form-label">Author ID:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="authorId" 
+          formControlName="authorId"
+          placeholder="Enter author ID">
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary me-2">Search</button>
+        <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
+      </div>
+    </form>
+  
+    <div *ngIf="showResults">
+      <div *ngIf="author" class="mt-4">
+        <h3>Author Information</h3>
+        <div class="card">
+          <div class="card-body">
+            <p><strong>ID:</strong> {{author.id}}</p>
+            <p><strong>First Name:</strong> {{author.firstName}}</p>
+            <p><strong>Last Name:</strong> {{author.lastName}}</p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger mt-4">
+        {{errorMessage}}
+      </div>
+    </div>
+  </div>
